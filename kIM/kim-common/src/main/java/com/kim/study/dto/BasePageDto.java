@@ -2,6 +2,8 @@ package com.kim.study.dto;
 
 import lombok.Data;
 
+import java.util.List;
+
 /**
  * @ClassName: BasePageDto
  * @Description: 分页参数基础类
@@ -20,4 +22,5 @@ public class BasePageDto {
      * 每页条数
      */
     private Integer rows;
+
 }

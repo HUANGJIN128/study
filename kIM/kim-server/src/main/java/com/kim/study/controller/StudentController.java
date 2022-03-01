@@ -1,11 +1,13 @@
 package com.kim.study.controller;
 
-import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.kim.study.dto.PageDto;
 import com.kim.study.entity.ProductEntidy;
 import com.kim.study.menu.AppHttpCodeEnum;
 import com.kim.study.resultbody.ResultBody;
-import com.kim.study.service.IProductService;
+import com.kim.study.resultbody.ResultPage;
+import com.kim.study.service.IStudentService;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -14,27 +16,25 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
- * @ClassName: ProductController
- * @Description: 商品控制器(mybatisplus案例)
- * @Author: KIM
- * @Date: 2022/2/25 14:59
- * @Version: 1.0
+ * Description: JPA案例
+ * Author:KIM
+ * Date:2022-03-01
+ * Time:17:53
  */
-
-
 @RestController
-@RequestMapping("/kim/product")
+@RequestMapping("/kim/student")
 @Slf4j
-public class ProductController {
+public class StudentController {
 
     @Autowired
-    private IProductService iProductService;
+    private IStudentService studentService;
 
     @PostMapping("/save")
+    @ApiOperation(value = "JPA保存接口")
     public ResultBody saveProduct(){
         ProductEntidy result=null;
         try {
-            iProductService.savePro();
+            studentService.saveStudent();
         } catch (Exception e) {
             log.error("保存数据异常:"+e.getMessage());
             return ResultBody.errorResult(AppHttpCodeEnum.SERVER_ERROR.getCode(),e.getMessage());
@@ -43,15 +43,16 @@ public class ProductController {
     }
 
 
-    @PostMapping("/pageQuery")
-    public ResultBody pageQuery(@RequestBody PageDto params){
-        IPage<ProductEntidy> page=null;
+    @PostMapping("/queryPage")
+    @ApiOperation(value = "JPA分页查询接口")
+    public ResultBody queryPage(@RequestBody PageDto pageDto){
+        ResultPage resultPage=null;
         try {
-            page = iProductService.pageQuery(params);
+             resultPage = studentService.queryPage(pageDto);
         } catch (Exception e) {
-            log.error("保存数据异常:"+e.getMessage());
+            log.error("JPA分页接口异常:"+e.getMessage());
             return ResultBody.errorResult(AppHttpCodeEnum.SERVER_ERROR.getCode(),e.getMessage());
         }
-        return ResultBody.okResult(page);
+        return ResultBody.okResult(resultPage);
     }
 }

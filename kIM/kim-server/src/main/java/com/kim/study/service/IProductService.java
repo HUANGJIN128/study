@@ -2,7 +2,7 @@ package com.kim.study.service;
 
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.service.IService;
-import com.kim.study.dto.ProductPageDto;
+import com.kim.study.dto.PageDto;
 import com.kim.study.entity.ProductEntidy;
 
 /**
@@ -17,5 +17,5 @@ public interface IProductService extends IService<ProductEntidy> {
 
     void savePro();
 
-    IPage<ProductEntidy> pageQuery(ProductPageDto productPageDto);
+    IPage<ProductEntidy> pageQuery(PageDto productPageDto);
 }

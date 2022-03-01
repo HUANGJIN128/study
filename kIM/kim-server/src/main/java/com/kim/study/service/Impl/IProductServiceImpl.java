@@ -4,23 +4,16 @@ import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.kim.study.dto.ProductPageDto;
+import com.kim.study.dto.PageDto;
 import com.kim.study.entity.ProductEntidy;
-import com.kim.study.exception.BusinessException;
 import com.kim.study.mapper.IProductMapper;
-import com.kim.study.menu.AppHttpCodeEnum;
 import com.kim.study.service.IProductService;
 import lombok.extern.slf4j.Slf4j;
-import org.apache.commons.lang3.ArrayUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.awt.print.Pageable;
 import java.math.BigDecimal;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
 import java.util.Random;
 
 /**
@@ -60,7 +53,7 @@ public class IProductServiceImpl extends ServiceImpl<IProductMapper,ProductEntid
     }
 
     @Override
-    public IPage<ProductEntidy> pageQuery(ProductPageDto productPageDto) {
+    public IPage<ProductEntidy> pageQuery(PageDto productPageDto) {
         QueryWrapper<ProductEntidy> query=new QueryWrapper<>();
         if(StringUtils.isNotEmpty(productPageDto.getName())){
             query.eq("NAME",productPageDto.getName());

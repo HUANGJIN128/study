@@ -11,7 +11,7 @@ import java.math.BigDecimal;
  * Time:16:35
  */
 @Data
-public class ProductPageDto extends BasePageDto {
+public class PageDto extends BasePageDto {
     private String name;
     private BigDecimal minpriace;
     private BigDecimal maxpriace;
