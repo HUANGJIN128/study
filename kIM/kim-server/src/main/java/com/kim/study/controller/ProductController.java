@@ -1,5 +1,7 @@
 package com.kim.study.controller;
 
+import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.kim.study.dto.ProductPageDto;
 import com.kim.study.entity.ProductEntidy;
 import com.kim.study.menu.AppHttpCodeEnum;
 import com.kim.study.resultbody.ResultBody;
@@ -38,5 +40,18 @@ public class ProductController {
             return ResultBody.errorResult(AppHttpCodeEnum.SERVER_ERROR.getCode(),e.getMessage());
         }
         return ResultBody.okResult("新增成功");
+    }
+
+
+    @PostMapping("/pageQuery")
+    public ResultBody pageQuery(@RequestBody ProductPageDto params){
+        IPage<ProductEntidy> page=null;
+        try {
+            page = iProductService.pageQuery(params);
+        } catch (Exception e) {
+            log.error("保存数据异常:"+e.getMessage());
+            return ResultBody.errorResult(AppHttpCodeEnum.SERVER_ERROR.getCode(),e.getMessage());
+        }
+        return ResultBody.okResult(page);
     }
 }
