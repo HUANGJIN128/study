@@ -6,6 +6,7 @@
     <modules>
         <module>kim-common</module>
         <module>kim-server</module>
+        <module>kim-gateway</module>
     </modules>
     <parent>
         <groupId>org.springframework.boot</groupId>
@@ -20,8 +21,8 @@
     <description>project for study</description>
     <properties>
         <java.version>1.8</java.version>
-        <spring-boot.version>2.2.4.RELEASE</spring-boot.version>
-        <spring-cloud.version>Hoxton.SR8</spring-cloud.version>
+        <spring-boot.version>2.4.2</spring-boot.version>
+        <spring-cloud.version>Hoxton.SR1</spring-cloud.version>
         <com.alibaba.cloud>2.2.1.RELEASE</com.alibaba.cloud>
         <mysql.version>5.1.46</mysql.version>
         <mybatis.version>3.5.1</mybatis.version>
@@ -33,14 +34,36 @@
         <swagger.version>2.9.2</swagger.version>
         <knife4j.version>2.0.2</knife4j.version>
         <swagger-bootstrap-ui>1.9.6</swagger-bootstrap-ui>
+        <jwt.version>0.9.1</jwt.version>
+        <fastjson.version>1.2.76</fastjson.version>
     </properties>
     <dependencies>
-        <!--热部署-->
+        <!--&lt;!&ndash;热部署&ndash;&gt;
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-devtools</artifactId>
             <optional>true</optional>
             <scope>true</scope>
+        </dependency>-->
+
+        <!--nacos注册中心-->
+        <dependency>
+            <groupId>com.alibaba.cloud</groupId>
+            <artifactId>spring-cloud-starter-alibaba-nacos-discovery</artifactId>
+        </dependency>
+        <!--nacos配置中心-->
+        <dependency>
+            <groupId>com.alibaba.cloud</groupId>
+            <artifactId>spring-cloud-starter-alibaba-nacos-config</artifactId>
+        </dependency>
+        <!--apache工具包-->
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>commons-io</groupId>
+            <artifactId>commons-io</artifactId>
         </dependency>
     </dependencies>
     <!--依赖版本控制-->
@@ -128,6 +151,18 @@
                 <artifactId>knife4j-spring-boot-starter</artifactId>
                 <version>${knife4j.version}</version>
             </dependency>
+            <!-- jwt -->
+            <dependency>
+                <groupId>io.jsonwebtoken</groupId>
+                <artifactId>jjwt</artifactId>
+                <version>${jwt.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.alibaba</groupId>
+                <artifactId>fastjson</artifactId>
+                <version>${fastjson.version}</version>
+            </dependency>
 
 
         </dependencies>
@@ -166,14 +201,14 @@
                     <target>${java.version}</target>
                 </configuration>
             </plugin>
-
-            <plugin>
+            <!--热部署相关-->
+            <!--<plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <configuration>
                     <fork>true</fork>
                 </configuration>
-            </plugin>
+            </plugin>-->
             <!--queryDsl相关-->
             <plugin>
                 <groupId>com.mysema.maven</groupId>

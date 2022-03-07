@@ -2,6 +2,7 @@ package com.kim.study.service.Impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.baomidou.mybatisplus.core.toolkit.ObjectUtils;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.kim.study.dto.PageDto;
@@ -58,8 +59,12 @@ public class IProductServiceImpl extends ServiceImpl<IProductMapper,ProductEntid
         if(StringUtils.isNotEmpty(productPageDto.getName())){
             query.eq("NAME",productPageDto.getName());
         }
-        query.ge("PRIACE",productPageDto.getMinpriace());
-        query.le("PRIACE",productPageDto.getMaxpriace());
+        if(ObjectUtils.isNotEmpty(productPageDto.getMinpriace())){
+            query.ge("PRIACE",productPageDto.getMinpriace());
+        }
+        if(ObjectUtils.isNotEmpty(productPageDto.getMaxpriace())){
+            query.le("PRIACE",productPageDto.getMaxpriace());
+        }
         IPage<ProductEntidy> page=new Page<>(productPageDto.getPage(),productPageDto.getRows());
         return productMapper.selectPage(page, query);
     }

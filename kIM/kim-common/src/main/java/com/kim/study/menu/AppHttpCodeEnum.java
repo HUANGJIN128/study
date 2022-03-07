@@ -32,7 +32,8 @@ public enum AppHttpCodeEnum {
     // 数据错误 3000~3500
     NO_OPERATOR_AUTH(3000,"无权限操作"),
     NEED_ADMIND(3001,"需要管理员权限"),
-    MATH_ERROR(006,"计算异常");
+    MATH_ERROR(006,"计算异常"),
+    USER_UNREGISTERED(1008,"未注册");
     int code;
     String errorMessage;
 

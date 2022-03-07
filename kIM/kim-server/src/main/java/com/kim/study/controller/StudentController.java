@@ -6,7 +6,6 @@ import com.kim.study.menu.AppHttpCodeEnum;
 import com.kim.study.resultbody.ResultBody;
 import com.kim.study.resultbody.ResultPage;
 import com.kim.study.service.IStudentService;
-import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;

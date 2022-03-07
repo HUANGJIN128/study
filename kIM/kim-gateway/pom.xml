@@ -9,15 +9,19 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.huangjin.study</groupId>
-    <artifactId>kim-server</artifactId>
+    <artifactId>kim-gateway</artifactId>
 
+    <properties>
+        <maven.compiler.source>8</maven.compiler.source>
+        <maven.compiler.target>8</maven.compiler.target>
+    </properties>
     <dependencies>
+        <!--gateway网关-->
         <dependency>
-            <groupId>com.huangjin.study</groupId>
-            <artifactId>kim-common</artifactId>
-            <version>0.0.1-SNAPSHOT</version>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-gateway</artifactId>
         </dependency>
-
     </dependencies>
+
+
 </project>
