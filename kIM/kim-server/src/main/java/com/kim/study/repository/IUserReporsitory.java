@@ -18,6 +18,6 @@ public interface IUserReporsitory extends BaseRepository<UserEntity>{
      * @param name
      * @return
      */
-    UserEntity findByUserName(String name);
+    UserEntity findByCode(String name);
 
 }

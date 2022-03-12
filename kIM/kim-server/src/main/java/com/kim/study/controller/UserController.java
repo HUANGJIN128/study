@@ -5,7 +5,6 @@ import com.kim.study.menu.AppHttpCodeEnum;
 import com.kim.study.resultbody.ResultBody;
 import com.kim.study.service.IUserService;
 import io.swagger.annotations.ApiOperation;
-import io.swagger.annotations.ApiParam;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -29,9 +28,13 @@ public class UserController {
     private IUserService userService;
 
 
+
+
     @GetMapping("/query-user-by-name")
     @ApiOperation(value = "根据用户名获取用户信息接口")
-    public ResultBody queryPage(@ApiParam(name = "用户名") String name){
+    public ResultBody queryPage( String name){
+
+
         UserEntity user=null;
         try {
             user = userService.getUserByUserName(name);
