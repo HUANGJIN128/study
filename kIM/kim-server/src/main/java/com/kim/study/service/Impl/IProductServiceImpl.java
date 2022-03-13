@@ -5,9 +5,12 @@ import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.core.toolkit.ObjectUtils;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.kim.study.config.BloomConfig;
 import com.kim.study.dto.PageDto;
 import com.kim.study.entity.ProductEntidy;
+import com.kim.study.exception.BusinessException;
 import com.kim.study.mapper.IProductMapper;
+import com.kim.study.menu.AppHttpCodeEnum;
 import com.kim.study.service.IProductService;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
@@ -15,6 +18,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
+import java.util.List;
 import java.util.Random;
 
 /**
@@ -31,6 +35,8 @@ public class IProductServiceImpl extends ServiceImpl<IProductMapper,ProductEntid
 
     @Autowired
     private IProductMapper productMapper;
+
+
     /**
      * 保存商品
      * @param
@@ -67,5 +73,24 @@ public class IProductServiceImpl extends ServiceImpl<IProductMapper,ProductEntid
         }
         IPage<ProductEntidy> page=new Page<>(productPageDto.getPage(),productPageDto.getRows());
         return productMapper.selectPage(page, query);
+    }
+
+    @Override
+    public List<String> getIdS() {
+        List<String> idS = productMapper.getIdS();
+        return idS;
+    }
+
+
+
+    @Override
+    public ProductEntidy getOne(String id) {
+        boolean b = BloomConfig.bloomFilter.mightContain(id);
+        if (!b){
+            log.error("该数据不存在");
+            throw new BusinessException(AppHttpCodeEnum.DATA_NOT_EXIST.getCode(),AppHttpCodeEnum.DATA_NOT_EXIST.getErrorMessage());
+        }
+        ProductEntidy productEntidy = productMapper.selectById(id);
+        return productEntidy;
     }
 }

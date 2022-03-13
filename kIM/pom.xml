@@ -36,6 +36,8 @@
         <swagger-bootstrap-ui>1.9.6</swagger-bootstrap-ui>
         <jwt.version>0.9.1</jwt.version>
         <fastjson.version>1.2.76</fastjson.version>
+        <!--布隆过滤器-->
+        <guava.version>22.0</guava.version>
     </properties>
     <dependencies>
         <!--&lt;!&ndash;热部署&ndash;&gt;
@@ -157,11 +159,17 @@
                 <artifactId>jjwt</artifactId>
                 <version>${jwt.version}</version>
             </dependency>
-
+            <!--fastjson-->
             <dependency>
                 <groupId>com.alibaba</groupId>
                 <artifactId>fastjson</artifactId>
                 <version>${fastjson.version}</version>
+            </dependency>
+            <!--布隆过滤器-->
+            <dependency>
+                <groupId>com.google.guava</groupId>
+                <artifactId>guava</artifactId>
+                <version>${guava.version}</version>
             </dependency>
 
 

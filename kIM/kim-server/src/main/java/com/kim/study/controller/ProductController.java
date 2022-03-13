@@ -8,10 +8,7 @@ import com.kim.study.resultbody.ResultBody;
 import com.kim.study.service.IProductService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * @ClassName: ProductController
@@ -54,4 +51,18 @@ public class ProductController {
         }
         return ResultBody.okResult(page);
     }
+    @PostMapping("/getOne")
+    public ResultBody getOne(@RequestParam String id){
+        ProductEntidy result=null;
+        try {
+            result =  iProductService.getOne(id);
+        } catch (Exception e) {
+            log.error("获取数据失败:"+e.getMessage());
+            return ResultBody.errorResult(AppHttpCodeEnum.SERVER_ERROR.getCode(),e.getMessage());
+        }
+        return ResultBody.okResult(result);
+    }
+
+
+
 }

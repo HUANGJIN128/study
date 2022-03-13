@@ -5,6 +5,8 @@ import com.baomidou.mybatisplus.extension.service.IService;
 import com.kim.study.dto.PageDto;
 import com.kim.study.entity.ProductEntidy;
 
+import java.util.List;
+
 /**
  * @ClassName: IProductService
  * @Description: TODO
@@ -15,7 +17,15 @@ import com.kim.study.entity.ProductEntidy;
 
 public interface IProductService extends IService<ProductEntidy> {
 
+
     void savePro();
 
     IPage<ProductEntidy> pageQuery(PageDto productPageDto);
+
+    List<String> getIdS();
+
+    public ProductEntidy getOne(String id);
+
+
+
 }
