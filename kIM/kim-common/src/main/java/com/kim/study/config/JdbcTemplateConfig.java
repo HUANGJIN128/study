@@ -1,18 +1,12 @@
 package com.kim.study.config;
 
-import org.springframework.boot.context.properties.bind.Bindable;
-import org.springframework.boot.context.properties.bind.Binder;
-import org.springframework.boot.context.properties.source.ConfigurationPropertyName;
 import org.springframework.boot.context.properties.source.ConfigurationPropertyNameAliases;
-import org.springframework.boot.context.properties.source.MapConfigurationPropertySource;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.Primary;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
 
 import javax.sql.DataSource;
-import java.util.Properties;
 
 /**
  * @ClassName JdbcTemplateConfig
@@ -31,7 +25,7 @@ public class JdbcTemplateConfig {
 
     Class<? extends DataSource> dataSourceClazz = null;
 
-    @Bean("firstJdbc")
+    /*@Bean("firstJdbc")
     @Primary
     public JdbcTemplate getJdbcTemplate(){
         Properties properties=new Properties();
@@ -52,9 +46,9 @@ public class JdbcTemplateConfig {
         // 将参数绑定到对象
         DataSource dataSource = binder.bind(ConfigurationPropertyName.EMPTY, Bindable.of(dataSourceClazz)).get();
         return new JdbcTemplate(dataSource);
-    }
+    }*/
 
-    @Bean("second")
+    @Bean("jdbcTemplate")
     public JdbcTemplate getJdbcTemplateE(){
         DriverManagerDataSource dataSource = new DriverManagerDataSource();
         dataSource.setUrl("jdbc:mysql://127.0.0.1:3336/cloud?characterEncoding=UTF-8&serverTimezone=Asia/Shanghai&");

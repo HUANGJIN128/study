@@ -36,6 +36,7 @@
         <swagger-bootstrap-ui>1.9.6</swagger-bootstrap-ui>
         <jwt.version>0.9.1</jwt.version>
         <fastjson.version>1.2.76</fastjson.version>
+        <grapecity.version>5.0.0</grapecity.version>
         <!--布隆过滤器-->
         <guava.version>22.0</guava.version>
     </properties>
@@ -96,6 +97,12 @@
                 <artifactId>spring-boot-starter-test</artifactId>
                 <version>${spring-boot.version}</version>
                 <scope>test</scope>
+            </dependency>
+            <!--gcExcel-->
+            <dependency>
+                <groupId>com.grapecity.documents</groupId>
+                <artifactId>gcexcel</artifactId>
+                <version>${grapecity.version}</version>
             </dependency>
 
             <!--mysql连接-->

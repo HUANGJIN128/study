@@ -21,6 +21,11 @@
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
 
+        <dependency>
+            <groupId>com.grapecity.documents</groupId>
+            <artifactId>gcexcel</artifactId>
+        </dependency>
+
         <!--mysql连接-->
         <dependency>
             <groupId>mysql</groupId>

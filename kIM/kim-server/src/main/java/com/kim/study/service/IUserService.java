@@ -1,6 +1,9 @@
 package com.kim.study.service;
 
 import com.kim.study.entity.UserEntity;
+import org.springframework.web.multipart.MultipartFile;
+
+import java.io.IOException;
 
 /**
  * @ClassName IUserService
@@ -10,9 +13,11 @@ import com.kim.study.entity.UserEntity;
  * @Version 1.0
  */
 
-public interface IUserService {
+public interface IUserService<T> {
 
 
     UserEntity getUserByUserName(String name);
+
+    void updateLode(MultipartFile multipartFile) throws IOException;
 
 }

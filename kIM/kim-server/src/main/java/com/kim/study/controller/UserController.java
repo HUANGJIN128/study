@@ -8,8 +8,10 @@ import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
 
 /**
  * @ClassName UserController
@@ -44,5 +46,21 @@ public class UserController {
         }
         return ResultBody.okResult(user);
     }
+
+
+    @PostMapping("updateLode")
+    @ApiOperation(value = "gcexcel上传文件")
+    public ResultBody updateLode( MultipartFile multipartFile){
+
+        try {
+            userService.updateLode(multipartFile);
+        } catch (Exception e) {
+            log.error("gcexcel上传文件:"+e.getMessage());
+            return ResultBody.errorResult(AppHttpCodeEnum.SERVER_ERROR.getCode(),e.getMessage());
+        }
+        return ResultBody.okResult();
+    }
+
+
 
 }
