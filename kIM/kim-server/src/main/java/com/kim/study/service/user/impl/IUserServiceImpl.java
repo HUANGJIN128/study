@@ -1,4 +1,4 @@
-package com.kim.study.service.Impl;
+package com.kim.study.service.user.impl;
 
 import com.grapecity.documents.excel.IRange;
 import com.grapecity.documents.excel.IWorksheet;
@@ -6,7 +6,7 @@ import com.grapecity.documents.excel.IWorksheets;
 import com.grapecity.documents.excel.Workbook;
 import com.kim.study.entity.UserEntity;
 import com.kim.study.repository.IUserReporsitory;
-import com.kim.study.service.IUserService;
+import com.kim.study.service.user.IUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;

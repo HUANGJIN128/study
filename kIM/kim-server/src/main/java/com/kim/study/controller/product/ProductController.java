@@ -1,11 +1,11 @@
-package com.kim.study.controller;
+package com.kim.study.controller.product;
 
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.kim.study.dto.PageDto;
 import com.kim.study.entity.ProductEntidy;
 import com.kim.study.menu.AppHttpCodeEnum;
 import com.kim.study.resultbody.ResultBody;
-import com.kim.study.service.IProductService;
+import com.kim.study.service.product.IProductService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;

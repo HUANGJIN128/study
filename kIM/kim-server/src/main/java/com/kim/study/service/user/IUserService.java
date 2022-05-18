@@ -1,4 +1,4 @@
-package com.kim.study.service;
+package com.kim.study.service.user;
 
 import com.kim.study.entity.UserEntity;
 import org.springframework.web.multipart.MultipartFile;

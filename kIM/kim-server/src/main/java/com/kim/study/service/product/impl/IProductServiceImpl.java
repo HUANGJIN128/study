@@ -1,4 +1,4 @@
-package com.kim.study.service.Impl;
+package com.kim.study.service.product.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
@@ -11,7 +11,7 @@ import com.kim.study.entity.ProductEntidy;
 import com.kim.study.exception.BusinessException;
 import com.kim.study.mapper.IProductMapper;
 import com.kim.study.menu.AppHttpCodeEnum;
-import com.kim.study.service.IProductService;
+import com.kim.study.service.product.IProductService;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;

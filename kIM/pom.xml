@@ -39,6 +39,10 @@
         <grapecity.version>5.0.0</grapecity.version>
         <!--布隆过滤器-->
         <guava.version>22.0</guava.version>
+        <!--ftp连接-->
+        <ftp.version>3.6</ftp.version>
+        <!--csv-->
+        <csv.version>1.6</csv.version>
     </properties>
     <dependencies>
         <!--&lt;!&ndash;热部署&ndash;&gt;
@@ -178,8 +182,18 @@
                 <artifactId>guava</artifactId>
                 <version>${guava.version}</version>
             </dependency>
-
-
+            <!--ftp连接-->
+            <dependency>
+                <groupId>commons-net</groupId>
+                <artifactId>commons-net</artifactId>
+                <version>${ftp.version}</version>
+            </dependency>
+            <!--csv文件-->
+            <dependency>
+                <groupId>org.apache.commons</groupId>
+                <artifactId>commons-csv</artifactId>
+                <version>${csv.version}</version>
+            </dependency>
         </dependencies>
     </dependencyManagement>
 

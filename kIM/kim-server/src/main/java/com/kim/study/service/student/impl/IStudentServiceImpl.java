@@ -1,11 +1,11 @@
-package com.kim.study.service.Impl;
+package com.kim.study.service.student.impl;
 
 import com.kim.study.dto.PageDto;
 import com.kim.study.entity.QStudentEntity;
 import com.kim.study.entity.StudentEntity;
 import com.kim.study.repository.IStudentRepository;
 import com.kim.study.resultbody.ResultPage;
-import com.kim.study.service.IStudentService;
+import com.kim.study.service.student.IStudentService;
 import com.querydsl.core.types.ExpressionUtils;
 import com.querydsl.core.types.Predicate;
 import com.querydsl.jpa.impl.JPAQuery;

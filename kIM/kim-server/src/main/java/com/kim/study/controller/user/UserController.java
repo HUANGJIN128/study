@@ -1,9 +1,9 @@
-package com.kim.study.controller;
+package com.kim.study.controller.user;
 
 import com.kim.study.entity.UserEntity;
 import com.kim.study.menu.AppHttpCodeEnum;
 import com.kim.study.resultbody.ResultBody;
-import com.kim.study.service.IUserService;
+import com.kim.study.service.user.IUserService;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;

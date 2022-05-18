@@ -2,7 +2,7 @@ package com.kim.study.config;
 
 import com.google.common.hash.BloomFilter;
 import com.google.common.hash.Funnels;
-import com.kim.study.service.IProductService;
+import com.kim.study.service.product.IProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;

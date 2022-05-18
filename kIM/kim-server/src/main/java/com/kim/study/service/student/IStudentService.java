@@ -1,4 +1,4 @@
-package com.kim.study.service;
+package com.kim.study.service.student;
 
 import com.kim.study.dto.PageDto;
 import com.kim.study.resultbody.ResultPage;
