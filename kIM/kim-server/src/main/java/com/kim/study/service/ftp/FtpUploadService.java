@@ -14,4 +14,6 @@ public interface FtpUploadService {
 
     public boolean uploadFile(String remoteFile, File localFile) throws IOException;
 
+    public void deleteFile(String remotePath) throws IOException;
+
 }

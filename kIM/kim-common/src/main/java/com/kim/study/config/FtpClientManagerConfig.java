@@ -33,27 +33,24 @@ public class FtpClientManagerConfig {
     private FTPClient ftpClient = null;
 
     public FTPClient getClient() {
-        if(this.ftpClient == null){
-            this.initClient();
-        }
+        this.initClient();
         return this.ftpClient;
     }
 
     private void initClient() {
-        if (this.ftpClient == null) {
-            ftpClient = new FTPClient();
-            try {
-                ftpClient.connect(ip,22);
-                ftpClient.login(username, password);
-                int reply = ftpClient.getReplyCode();
-                if (!FTPReply.isPositiveCompletion(reply)) {
-                    ftpClient.disconnect();
-                }
-                logger.info("success to connect ftp server");
-            } catch (IOException e) {
-                logger.error("faild to connect ftp server because " + e.getMessage());
-                this.ftpClient=null;
+        ftpClient = new FTPClient();
+        try {
+            ftpClient.connect(ip,port);
+            ftpClient.login(username, password);
+            logger.info("初始化ftp连接username={},password={},ip={},port={}",username,password,ip,port);
+            int reply = ftpClient.getReplyCode();
+            if (!FTPReply.isPositiveCompletion(reply)) {
+                ftpClient.disconnect();
             }
+            logger.info("success to connect ftp server");
+        } catch (IOException e) {
+            logger.error("faild to connect ftp server because " + e.getMessage());
+            this.ftpClient=null;
         }
     }
 }
