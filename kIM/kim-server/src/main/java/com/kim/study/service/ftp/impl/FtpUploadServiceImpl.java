@@ -8,10 +8,7 @@ import org.apache.commons.net.ftp.FTPFile;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.io.InputStream;
+import java.io.*;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
@@ -81,6 +78,32 @@ public class FtpUploadServiceImpl implements FtpUploadService {
         }
         ftpClient.disconnect();
     }
+
+    /**
+     * 下载文件
+     * @return
+     * @throws IOException
+     */
+
+    @Override
+    public  boolean downFile() throws IOException {
+        boolean isTrue = false;
+        OutputStream os=null;
+        String fileName="/tmp/userdriver/portray_20220601.csv";
+        FTPClient ftpClient = ftpClientManager.getClient();
+        ftpClient.changeWorkingDirectory("/tmp/userdriver");
+        FTPFile[] ftpFiles = ftpClient.listFiles();
+        for (FTPFile ftpFile : ftpFiles) {
+            String name = ftpFile.getName();
+            log.info("/tmp/userdriver目录下的文件--"+name);
+        }
+        os = new FileOutputStream("/opt/sgd/test.csv");
+        isTrue = ftpClient.retrieveFile(new String(fileName.getBytes(),"ISO-8859-1"), os);
+        os.close();
+        ftpClient.disconnect();
+        return isTrue;
+    }
+
 
 
 }

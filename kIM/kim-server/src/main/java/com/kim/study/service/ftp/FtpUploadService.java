@@ -16,4 +16,7 @@ public interface FtpUploadService {
 
     public void deleteFile(String remotePath) throws IOException;
 
+    public  boolean downFile() throws IOException;
+
+
 }
