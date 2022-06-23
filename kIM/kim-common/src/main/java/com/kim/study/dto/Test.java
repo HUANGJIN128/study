@@ -11,7 +11,7 @@ public class Test {
 
 
 
-    public void test{
+    public void test(){
         System.out.println("haha");
         System.out.println("heiehi");
         System.out.println("第三次");
