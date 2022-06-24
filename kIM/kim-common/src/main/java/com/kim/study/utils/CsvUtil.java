@@ -26,10 +26,14 @@ public class CsvUtil {
     //CSV文件分隔符
     private final static String NEW_LINE_SEPARATOR="\n";
     /** CSV文件列分隔符 */
-    private static final String CSV_COLUMN_SEPARATOR = ",";
+    private static final String CSV_COLUMN_SEPARATOR = "^A";
     /** CSV文件列分隔符 */
     private static final String CSV_RN = "\r\n";
- 
+    /**
+     * DES加密key
+     */
+    private static final String DES_KEY = "bigdataR";
+
     /**写入csv文件 创建表头,所有数据一次性写入
      * @param headers 列头
      * @param data 数据内容
@@ -44,7 +48,7 @@ public class CsvUtil {
             OutputStreamWriter osw = new OutputStreamWriter(fos, "GBK");
             //创建CSVPrinter对象
             CSVPrinter printer = new CSVPrinter(osw, format);
- 
+
             if(null!=data){
                 //循环写入数据
                 for(Object[] lineData:data){
@@ -58,7 +62,7 @@ public class CsvUtil {
         }
     }
 
- 
+
     /**写入csv文件 可以分批写入,创建一次表头
      * @param headers 列头
      * @param data 数据内容
@@ -75,7 +79,7 @@ public class CsvUtil {
             CSVPrinter printer = new CSVPrinter(osw,format);
             //写入列头数据
             printer.printRecord(headers);
- 
+
             if(null!=data){
                 //循环写入数据
                 for(Object[] lineData:data){
@@ -94,21 +98,19 @@ public class CsvUtil {
     /**es数据分批写入csv文件
      *
      * @param filePath 创建的csv文件路径
-     * @throws IOException **/
-    /*public static void writeCsvWithRecordSeparator(CSVFormat format, SearchHit[] hitsResult, String filePath,String mblphNo,Map initTableInfo,Integer page){
-        List<String> nameList = (List<String>) initTableInfo.get("name");
-        List<String> columnList = (List<String>) initTableInfo.get("headercolumns");
+     * @throws IOException **//*
+    public static void writeCsvWithRecordSeparator(CSVFormat format, SearchHit[] hitsResult, String filePath,String mblphNo,List<String> initTableInfo,Integer page){
         List<Object[]> dataList=new ArrayList<>();
         for (SearchHit  documentFields: hitsResult) {
             List<Object> data=new ArrayList<>();
-             Map<String, Object> map = documentFields.getSourceAsMap();
+            Map<String, Object> map = documentFields.getSourceAsMap();
             String mblphNoValue= (String) map.get(mblphNo);
-            mblphNoValue=mblphNoValue.substring(0,3)+"****"+mblphNoValue.substring(8);
-            map.put(mblphNo,mblphNoValue);
-
-            for (String column : columnList) {
+            //对用户手机号进行Des加密处理
+            String encryptMbl = DESUtil.encrypt(mblphNoValue, DES_KEY);
+            map.put(mblphNo,encryptMbl);
+            for (String column : initTableInfo) {
                 Object value = map.get(column);
-                data.add(value);
+                data.add(String.valueOf(value));
             }
             Object[] objects = data.toArray();
             dataList.add(objects);
@@ -121,7 +123,7 @@ public class CsvUtil {
             CSVPrinter printer = new CSVPrinter(osw, format);
             if(page==0){
                 //写入列头数据
-                printer.printRecord(nameList.toArray());
+                printer.printRecord(initTableInfo.toArray());
             }
             if(null!=dataList){
                 //循环写入数据
@@ -135,28 +137,17 @@ public class CsvUtil {
             e.printStackTrace();
         }
     }*/
-
-    /**
-     *
-     * @param format csv初始化
-     * @param hitsResult 文本数据
-     * @param filePath 本地地址
-     * @param mblphNo 特殊处理字符(此处为手机号)
-     * @param initTableInfo (csv表头配置)
-     * @param page (循环追加写入判断条件)
-     */
-    public static void writeCsvWithRecordSeparator(CSVFormat format, List<Map> hitsResult, String filePath,String mblphNo,Map initTableInfo,Integer page){
-        List<String> nameList = (List<String>) initTableInfo.get("name");
-        List<String> columnList = (List<String>) initTableInfo.get("headercolumns");
+    public static void writeCsvWithRecordSeparator(CSVFormat format, List<Map> hitsResult, String filePath,String mblphNo,List<String> initTableInfo,Integer page){
         List<Object[]> dataList=new ArrayList<>();
         for (Map  map: hitsResult) {
             List<Object> data=new ArrayList<>();
             //Map<String, Object> map = documentFields.getSourceAsMap();
             String mblphNoValue= (String) map.get(mblphNo);
-            mblphNoValue=mblphNoValue.substring(0,3)+"****"+mblphNoValue.substring(8);
-            map.put(mblphNo,mblphNoValue);
+            //mblphNoValue=mblphNoValue.substring(0,3)+"****"+mblphNoValue.substring(8);
+            String encryptMbl = DESUtil.encrypt(mblphNoValue, DES_KEY);
+            map.put(mblphNo,encryptMbl);
 
-            for (String column : columnList) {
+            for (String column : initTableInfo) {
                 Object value = map.get(column);
                 data.add(value);
             }
@@ -171,7 +162,7 @@ public class CsvUtil {
             CSVPrinter printer = new CSVPrinter(osw, format);
             if(page==0){
                 //写入列头数据
-                printer.printRecord(nameList.toArray());
+                printer.printRecord(initTableInfo.toArray());
             }
             if(null!=dataList){
                 //循环写入数据
@@ -185,7 +176,7 @@ public class CsvUtil {
             e.printStackTrace();
         }
     }
- 
+
     /**
      * @filePath 文件路径
      */
@@ -213,7 +204,7 @@ public class CsvUtil {
     public static ByteArrayOutputStream doExport(String[] colNames, String[] mapKeys, List<Map> dataList) {
         try {
             StringBuffer buf = new StringBuffer();
- 
+
             // 完成数据csv文件的封装
             // 输出列头
             for (int i = 0; i < colNames.length; i++) {
@@ -242,7 +233,83 @@ public class CsvUtil {
         }
         return null;
     }
- 
+
+
+
+    /*public static ByteArrayOutputStream doExport(List<String> colNames, SearchHit[] hitsResult,String mblphNo,String filePath,Integer page) {
+        try {
+            StringBuffer buf = new StringBuffer();
+
+
+            // 完成数据csv文件的封装
+            // 输出列头
+            if(page==0){
+                for (int i = 0; i < colNames.size(); i++) {
+                    buf.append(colNames.get(i)).append(CSV_COLUMN_SEPARATOR);
+                }
+                buf.append(CSV_RN);
+            }
+            // 输出数据
+            if (null != hitsResult) {
+                for (SearchHit documentFields : hitsResult) {
+                    List<Object> data=new ArrayList<>();
+                    Map<String, Object> map = documentFields.getSourceAsMap();
+                    String mblphNoValue= (String) map.get(mblphNo);
+                    //对用户手机号进行Des加密处理
+                    String encryptMbl = DESUtil.encrypt(mblphNoValue, DES_KEY);
+                    map.put(mblphNo,encryptMbl);
+                    for (String column : colNames) {
+                        Object value = map.get(column);
+                        data.add(String.valueOf(value));
+                    }
+                    for (Object datum : data) {
+                        buf.append(String.valueOf(datum)).append(CSV_COLUMN_SEPARATOR);
+                    }
+                    buf.append(CSV_RN);
+
+                }
+            }
+            // 写出响应
+            FileOutputStream fos = new FileOutputStream(filePath,true);
+            OutputStreamWriter osw = new OutputStreamWriter(fos, "utf-8");
+            osw.write(buf.toString());
+            osw.flush();
+            osw.close();
+            //return os;
+        } catch (Exception e) {
+            log.error("doExport错误...", e);
+            e.printStackTrace();
+        }
+        return null;
+    }*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     public static HttpHeaders setCsvHeader(String fileName) {
         HttpHeaders headers = new HttpHeaders();
         try {
@@ -260,5 +327,5 @@ public class CsvUtil {
     }
 
 
- 
+
 }

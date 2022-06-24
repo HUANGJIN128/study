@@ -67,7 +67,7 @@ public class FtpController {
         //初始化csvformat
         CSVFormat csvFormat = CSVFormat.DEFAULT.withRecordSeparator(NEW_LINE_SEPARATOR);
         for (int i = 0; i < 2; i++) {
-            CsvUtil.writeCsvWithRecordSeparator(csvFormat,mapList,csvTempAdd+ File.separator+"test.csv","MBLPH_NO",initmap,i);
+            CsvUtil.writeCsvWithRecordSeparator(csvFormat,mapList,csvTempAdd+ File.separator+"test.csv","MBLPH_NO",tableColumnsList,i);
         }
         boolean b = ftpUploadService.uploadFile(remorePath, new File("E:\\develop\\test.csv"));
         return ResultBody.okResult("成功");
