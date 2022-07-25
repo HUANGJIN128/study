@@ -43,6 +43,14 @@
         <ftp.version>3.6</ftp.version>
         <!--csv-->
         <csv.version>1.6</csv.version>
+        <!--minio-->
+        <minio.version>6.0.13</minio.version>
+        <!--xlsx-streamer   处理excel大数据上传-->
+        <xlsx.version>2.1.0</xlsx.version>
+        <!--hutu-->
+        <hutu.version>5.5.4</hutu.version>
+        <!---->
+        <freemarker.version>2.3.29</freemarker.version>
     </properties>
     <dependencies>
         <!--&lt;!&ndash;热部署&ndash;&gt;
@@ -194,6 +202,31 @@
                 <artifactId>commons-csv</artifactId>
                 <version>${csv.version}</version>
             </dependency>
+
+            <dependency>
+                <groupId>io.minio</groupId>
+                <artifactId>minio</artifactId>
+                <version>${minio.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.monitorjbl</groupId>
+                <artifactId>xlsx-streamer</artifactId>
+                <version>${xlsx.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>cn.hutool</groupId>
+                <artifactId>hutool-all</artifactId>
+                <version>${hutu.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.freemarker</groupId>
+                <artifactId>freemarker</artifactId>
+                <version>${freemarker.version}</version>
+            </dependency>
+
         </dependencies>
     </dependencyManagement>
 
