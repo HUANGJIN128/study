@@ -1,7 +1,6 @@
 package com.kim.study.resultbody;
 
 
-import com.kim.study.base.BaseBean;
 import com.kim.study.container.StrContainer;
 
 
@@ -40,7 +39,7 @@ public class ResultBody<T> {
         this.msg = msg;
     }
 
-    public static ResultBody errorResult(int code, String msg) {
+    public static ResultBody errorResult(Integer code, String msg) {
         ResultBody result = new ResultBody();
         return result.error(code, msg);
     }

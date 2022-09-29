@@ -51,6 +51,8 @@
         <hutu.version>5.5.4</hutu.version>
         <!---->
         <freemarker.version>2.3.29</freemarker.version>
+        <!--es-->
+        <elasticsearch.version>7.4.2</elasticsearch.version>
     </properties>
     <dependencies>
         <!--&lt;!&ndash;热部署&ndash;&gt;
@@ -80,6 +82,8 @@
             <groupId>commons-io</groupId>
             <artifactId>commons-io</artifactId>
         </dependency>
+
+
     </dependencies>
     <!--依赖版本控制-->
     <dependencyManagement>
@@ -222,6 +226,12 @@
             </dependency>
 
             <dependency>
+                <groupId>org.elasticsearch</groupId>
+                <artifactId>elasticsearch</artifactId>
+                <version>${elasticsearch.version}</version>
+            </dependency>
+
+            <dependency>
                 <groupId>org.freemarker</groupId>
                 <artifactId>freemarker</artifactId>
                 <version>${freemarker.version}</version>
@@ -231,6 +241,20 @@
     </dependencyManagement>
 
     <build>
+        <!--读取pom中的信息-->
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+                <filtering>true</filtering>
+            </resource>
+            <resource>
+                <directory>src/main/java</directory>
+                <includes>
+                    <include>**/*.xlsx</include>
+                </includes>
+                <filtering>false</filtering>
+            </resource>
+        </resources>
         <pluginManagement>
             <plugins>
                 <!--打包插件-->

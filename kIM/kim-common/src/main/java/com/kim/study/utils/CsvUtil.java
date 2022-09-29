@@ -5,6 +5,7 @@ import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVParser;
 import org.apache.commons.csv.CSVPrinter;
 import org.apache.commons.csv.CSVRecord;
+import org.elasticsearch.search.SearchHit;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
 
@@ -234,13 +235,18 @@ public class CsvUtil {
         return null;
     }
 
-
-
-    /*public static ByteArrayOutputStream doExport(List<String> colNames, SearchHit[] hitsResult,String mblphNo,String filePath,Integer page) {
+    /**
+     * es中的数据输出到csv文件
+     * @param colNames 表头
+     * @param hitsResult data
+     * @param mblphNo 加密电话
+     * @param filePath 写入本地文件路径
+     * @param page 分页中的第几页
+     * @return
+     */
+    public static ByteArrayOutputStream doExport(List<String> colNames, SearchHit[] hitsResult, String mblphNo, String filePath, Integer page) {
         try {
             StringBuffer buf = new StringBuffer();
-
-
             // 完成数据csv文件的封装
             // 输出列头
             if(page==0){
@@ -281,7 +287,7 @@ public class CsvUtil {
             e.printStackTrace();
         }
         return null;
-    }*/
+    }
     
     public static HttpHeaders setCsvHeader(String fileName) {
         HttpHeaders headers = new HttpHeaders();

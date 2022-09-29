@@ -24,7 +24,6 @@ public class BloomConfig implements ApplicationRunner {
     @Autowired
     private IProductService productService;
 
-
     public static BloomFilter<String> bloomFilter=BloomFilter.create(Funnels.stringFunnel(Charset.forName("UTF-8")),100);
     @Override
     public void run(ApplicationArguments args) throws Exception {

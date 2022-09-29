@@ -53,8 +53,8 @@ public class ExcelUtiil {
                 if(row==null){
                     continue;
                 }
-                cellBeginIndex=GetCellBeginIndex(cellBeginIndex, row);
-                cellEndIndex= GetEndBeginIndex(cellEndIndex, row);
+                cellBeginIndex=getCellBeginIndex(cellBeginIndex, row);
+                cellEndIndex= getEndIndex(cellEndIndex, row);
 
                 List<Object> rowData=new ArrayList<>();
                 for (  int i=cellBeginIndex; i <=cellEndIndex; i++) {
@@ -85,7 +85,7 @@ public class ExcelUtiil {
      * @param row
      * @return
      */
-    private Integer GetCellBeginIndex(Integer cellBeginIndex, Row row) {
+    private Integer getCellBeginIndex(Integer cellBeginIndex, Row row) {
         while(cellBeginIndex ==-1){
             for (Integer i = 0; i < row.getLastCellNum(); i++) {
                 Cell cell = row.getCell(i);
@@ -105,7 +105,7 @@ public class ExcelUtiil {
      * @param row
      * @return
      */
-    private Integer GetEndBeginIndex(Integer cellEndIndex, Row row) {
+    private Integer getEndIndex(Integer cellEndIndex, Row row) {
         while(cellEndIndex ==-1){
             for (Integer i = row.getLastCellNum()-1; i >=0; i--) {
                 Cell cell = row.getCell(i);

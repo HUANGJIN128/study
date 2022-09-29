@@ -57,7 +57,6 @@ public class DESUtil {
             cipher.init(Cipher.ENCRYPT_MODE, keySpec, ivSpec);
             byte[] encryped = cipher.doFinal(plaintext);
             String hex = new BigInteger(1, encryped).toString(16);
-            //return new String(Base64.getEncoder().encode(encryped));
             return hex;
 
         } catch (Exception e) {
