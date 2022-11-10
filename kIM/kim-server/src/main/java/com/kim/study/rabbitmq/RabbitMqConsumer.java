@@ -1,3 +1,4 @@
+/*
 package com.kim.study.rabbitmq;
 
 import com.alibaba.fastjson.JSONException;
@@ -12,13 +13,15 @@ import org.springframework.stereotype.Service;
 import java.io.IOException;
 import java.util.Map;
 
+*/
 /**
  * @ClassName RabbitMqConsumer
  * @Description TODO
  * @Author KIM
  * @Date 2022/3/5 20:00
  * @Version 1.0
- */
+ *//*
+
 @Service
 @Slf4j
 public class RabbitMqConsumer {
@@ -62,3 +65,4 @@ public class RabbitMqConsumer {
         }
     }
 }
+*/

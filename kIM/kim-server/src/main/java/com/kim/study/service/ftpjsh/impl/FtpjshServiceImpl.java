@@ -1,9 +1,10 @@
+/*
 package com.kim.study.service.ftpjsh.impl;
 
 import com.jcraft.jsch.ChannelSftp;
 import com.jcraft.jsch.JSchException;
 import com.jcraft.jsch.SftpException;
-import com.kim.study.config.FtpjschConfig;
+import com.kim.study.common.config.FtpjschConfig;
 import com.kim.study.service.ftpjsh.FtpjshService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,13 +20,15 @@ import java.util.Date;
 import java.util.Iterator;
 import java.util.Vector;
 
+*/
 /**
  * @ClassName FtpjshServiceImpl
  * @Description TODO
  * @Author KIM
  * @Date 2022/5/19 14:02
  * @Version 1.0
- */
+ *//*
+
 @Slf4j
 @Service
 public class FtpjshServiceImpl implements FtpjshService {
@@ -98,3 +101,4 @@ public class FtpjshServiceImpl implements FtpjshService {
         }
     }
 }
+*/

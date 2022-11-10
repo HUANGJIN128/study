@@ -31,5 +31,4 @@ public class ServerApplication {
         PaginationInterceptor paginationInterceptor = new PaginationInterceptor();
         return paginationInterceptor;
     }
-
 }

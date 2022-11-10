@@ -2,8 +2,8 @@ package com.kim.study.service.product;
 
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.service.IService;
+import com.kim.study.common.entity.ProductEntidy;
 import com.kim.study.dto.PageDto;
-import com.kim.study.entity.ProductEntidy;
 
 import java.util.List;
 

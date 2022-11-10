@@ -1,5 +1,6 @@
 package com.kim.study.dto;
 
+import com.kim.study.common.dto.BasePageDto;
 import lombok.Data;
 
 import java.math.BigDecimal;

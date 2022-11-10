@@ -1,3 +1,4 @@
+/*
 package com.kim.study.rabbitmq;
 
 import com.alibaba.fastjson.JSONObject;
@@ -8,13 +9,15 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+*/
 /**
  * @ClassName RabbitMqProvider
  * @Description TODO
  * @Author KIM
  * @Date 2022/3/4 15:34
  * @Version 1.0
- */
+ *//*
+
 
 
 
@@ -33,3 +36,4 @@ public class RabbitMqProvider {
         return str;
     }
 }
+*/

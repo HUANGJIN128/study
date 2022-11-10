@@ -1,7 +1,7 @@
 package com.kim.study.service.student;
 
+import com.kim.study.common.resultbody.ResultPage;
 import com.kim.study.dto.PageDto;
-import com.kim.study.resultbody.ResultPage;
 
 /**
  * Description:

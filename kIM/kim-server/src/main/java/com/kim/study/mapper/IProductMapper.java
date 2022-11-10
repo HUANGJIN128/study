@@ -1,7 +1,7 @@
 package com.kim.study.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import com.kim.study.entity.ProductEntidy;
+import com.kim.study.common.entity.ProductEntidy;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
 

@@ -1,6 +1,6 @@
 package com.kim.study.repository;
 
-import com.kim.study.entity.UserEntity;
+import com.kim.study.common.entity.UserEntity;
 import org.springframework.stereotype.Component;
 
 /**

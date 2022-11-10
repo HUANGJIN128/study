@@ -4,7 +4,6 @@
     <modelVersion>4.0.0</modelVersion>
     <packaging>pom</packaging>
     <modules>
-        <module>kim-common</module>
         <module>kim-server</module>
         <module>kim-gateway</module>
     </modules>
@@ -36,7 +35,6 @@
         <swagger-bootstrap-ui>1.9.6</swagger-bootstrap-ui>
         <jwt.version>0.9.1</jwt.version>
         <fastjson.version>1.2.76</fastjson.version>
-        <grapecity.version>5.0.0</grapecity.version>
         <!--布隆过滤器-->
         <guava.version>22.0</guava.version>
         <!--ftp连接-->
@@ -44,7 +42,7 @@
         <!--csv-->
         <csv.version>1.6</csv.version>
         <!--minio-->
-        <minio.version>6.0.13</minio.version>
+        <minio.version>8.0.3</minio.version>
         <!--xlsx-streamer   处理excel大数据上传-->
         <xlsx.version>2.1.0</xlsx.version>
         <!--hutu-->
@@ -54,37 +52,17 @@
         <!--es-->
         <elasticsearch.version>7.4.2</elasticsearch.version>
     </properties>
-    <dependencies>
-        <!--&lt;!&ndash;热部署&ndash;&gt;
+    <!--<dependencies>
+        &lt;!&ndash;&lt;!&ndash;热部署&ndash;&gt;
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-devtools</artifactId>
             <optional>true</optional>
             <scope>true</scope>
-        </dependency>-->
+        </dependency>&ndash;&gt;
+        &lt;!&ndash;apache工具包&ndash;&gt;
 
-        <!--nacos注册中心-->
-        <dependency>
-            <groupId>com.alibaba.cloud</groupId>
-            <artifactId>spring-cloud-starter-alibaba-nacos-discovery</artifactId>
-        </dependency>
-        <!--nacos配置中心-->
-        <dependency>
-            <groupId>com.alibaba.cloud</groupId>
-            <artifactId>spring-cloud-starter-alibaba-nacos-config</artifactId>
-        </dependency>
-        <!--apache工具包-->
-        <dependency>
-            <groupId>org.apache.commons</groupId>
-            <artifactId>commons-lang3</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>commons-io</groupId>
-            <artifactId>commons-io</artifactId>
-        </dependency>
-
-
-    </dependencies>
+    </dependencies>-->
     <!--依赖版本控制-->
     <dependencyManagement>
         <dependencies>
@@ -107,18 +85,6 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-starter-web</artifactId>
                 <version>${spring-boot.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-starter-test</artifactId>
-                <version>${spring-boot.version}</version>
-                <scope>test</scope>
-            </dependency>
-            <!--gcExcel-->
-            <dependency>
-                <groupId>com.grapecity.documents</groupId>
-                <artifactId>gcexcel</artifactId>
-                <version>${grapecity.version}</version>
             </dependency>
 
             <!--mysql连接-->

@@ -1,8 +1,8 @@
 package com.kim.study.controller.ftp;
 
-import com.kim.study.resultbody.ResultBody;
+import com.kim.study.common.resultbody.ResultBody;
+import com.kim.study.common.utils.CsvUtil;
 import com.kim.study.service.ftp.FtpUploadService;
-import com.kim.study.utils.CsvUtil;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.csv.CSVFormat;

@@ -1,6 +1,6 @@
 package com.kim.study.service.ftp.impl;
 
-import com.kim.study.config.FtpClientManagerConfig;
+import com.kim.study.common.config.FtpClientManagerConfig;
 import com.kim.study.service.ftp.FtpUploadService;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.net.ftp.FTPClient;

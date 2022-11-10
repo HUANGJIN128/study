@@ -5,12 +5,9 @@ import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.core.toolkit.ObjectUtils;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.kim.study.config.BloomConfig;
+import com.kim.study.common.entity.ProductEntidy;
 import com.kim.study.dto.PageDto;
-import com.kim.study.entity.ProductEntidy;
-import com.kim.study.exception.BusinessException;
 import com.kim.study.mapper.IProductMapper;
-import com.kim.study.menu.AppHttpCodeEnum;
 import com.kim.study.service.product.IProductService;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
@@ -30,7 +27,7 @@ import java.util.Random;
  */
 @Service
 @Slf4j
-public class IProductServiceImpl extends ServiceImpl<IProductMapper,ProductEntidy> implements IProductService {
+public class IProductServiceImpl extends ServiceImpl<IProductMapper, ProductEntidy> implements IProductService {
 
 
     @Autowired
@@ -85,10 +82,11 @@ public class IProductServiceImpl extends ServiceImpl<IProductMapper,ProductEntid
 
     @Override
     public ProductEntidy getOne(String id) {
-        boolean b = BloomConfig.bloomFilter.mightContain(id);
+        //boolean b = BloomConfig.bloomFilter.mightContain(id);
+        boolean b=true;
         if (!b){
             log.error("该数据不存在");
-            throw new BusinessException(AppHttpCodeEnum.DATA_NOT_EXIST.getCode(),AppHttpCodeEnum.DATA_NOT_EXIST.getErrorMessage());
+            //throw new BusinessException(AppHttpCodeEnum.DATA_NOT_EXIST.getCode(),AppHttpCodeEnum.DATA_NOT_EXIST.getErrorMessage());
         }
         ProductEntidy productEntidy = productMapper.selectById(id);
         return productEntidy;
